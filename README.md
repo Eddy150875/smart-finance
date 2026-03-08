@@ -4,8 +4,6 @@
 
 ![Screenshot App](https://raw.githubusercontent.com/brzozanet/smart-finance/main/frontend/public/gh-cover-goit-smart-finance-2.jpg)
 
-![Screenshot App](https://raw.githubusercontent.com/brzozanet/smart-finance/main/frontend/public/gh-cover-goit-smart-finance-3.jpg)
-
 Smart Finance Kapu$ta to praktyczny projekt full-stack do zarządzania domowym budżetem z autoryzacją, API i bazą MongoDB. Jest to aplikacja do zarządzania domowymi finansami: przychodami, wydatkami, saldem konta, historią transakcji i raportami miesięcznymi. Projekt składa się z frontendu w React oraz backendu API w Express, z bazą danych MongoDB (Atlas/lokalnie).
 
 ## 🌐 Demo
