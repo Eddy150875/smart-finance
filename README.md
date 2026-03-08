@@ -1,105 +1,242 @@
-# Smart Finance
+# 💸 Smart Finance Kapu$ta
 
-Aplikacja do zarzadzania wydatkami/przychodami:
+Aplikacja do zarzadzania domowymi finansami: przychodami, wydatkami, saldem konta, historia transakcji i raportami miesiecznymi.
 
-- frontend: React (CRA)
-- backend: Express + MongoDB (Mongoose)
+Projekt sklada sie z frontendu w React oraz backendu API w Express, z baza danych MongoDB (Atlas/lokalnie).
 
-## Architektura deploy
+## 🌐 Demo
 
-- Frontend: Vercel
-- Backend API: Render
-- Baza danych: MongoDB Atlas (lub inny MongoDB URI)
+### 🚀 Wersja online
 
-## Czy sam MongoDB wystarczy bez Render?
+Aplikacja jest dostepna online pod adresem:
 
-Nie. MongoDB to tylko baza danych. Nadal potrzebujesz runtime dla API (`backend/server.js`), bo frontend wysyla zapytania do endpointow takich jak `/auth/*` i `/transaction/*`.
+**👉 [https://smart-finance-kapusta.vercel.app/](https://smart-finance-kapusta.vercel.app/)**
 
-## Szybki start lokalnie
+**Platformy:**
 
-1. Zainstaluj zaleznosci w root:
+- **Frontend**: [Vercel](https://vercel.com) - hosting aplikacji React (CRA)
+- **Backend**: [Render](https://render.com) - hosting API Express
+- **Database**: MongoDB Atlas
 
-```bash
-npm install
+**⚠️ Wazne informacje:**
+
+- **Cold Start**: Backend na Render (darmowy plan) moze potrzebowac kilkunastu sekund po dluzszej bezczynnosci.
+- **CORS**: Backend akceptuje originy z `FRONTEND_URL` (wspiera tez wildcard `https://*.vercel.app`).
+
+### 📦 Architektura
+
+Aplikacja sklada sie z dwoch czesci:
+
+- **Frontend**: React + Redux Toolkit + React Router, hostowany na Vercel
+- **Backend**: Express + Mongoose + JWT auth, hostowany na Render
+
+## 🛠 Uzyte technologie
+
+### Frontend
+
+- **React 18**
+- **React Router DOM 7**
+- **Redux Toolkit + React Redux**
+- **Axios**
+- **Chart.js + react-chartjs-2 + chartjs-plugin-datalabels**
+- **react-datepicker + moment**
+- **CSS Modules**
+
+### Backend
+
+- **Node.js + Express 5**
+- **MongoDB + Mongoose**
+- **JWT + Passport + passport-jwt**
+- **bcryptjs**
+- **Joi** (walidacja)
+- **cors, dotenv, morgan**
+
+### Narzedzia deweloperskie
+
+- **npm workspaces** (frontend + backend)
+- **ESLint (react-scripts)**
+- **Git & GitHub**
+
+## 📂 Struktura aplikacji
+
+```
+smart-finance/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Balance/
+│   │   │   ├── Expenses/
+│   │   │   ├── Income/
+│   │   │   ├── CategoryList/
+│   │   │   ├── Chart/
+│   │   │   ├── DatePickerForm/
+│   │   │   ├── LoginForm/
+│   │   │   ├── PrivateRoute/
+│   │   │   ├── ProtectedRoute/
+│   │   │   └── ...
+│   │   ├── pages/
+│   │   │   ├── LoginPage/
+│   │   │   ├── TransactionsPage/
+│   │   │   └── ReportsPage/
+│   │   ├── hooks/
+│   │   ├── redux/
+│   │   │   ├── user/
+│   │   │   ├── expenses/
+│   │   │   ├── incomes/
+│   │   │   └── reports/
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── public/
+│   ├── .env.example
+│   └── package.json
+├── backend/
+│   ├── auth/
+│   ├── controllers/
+│   ├── routes/
+│   ├── services/
+│   ├── models/
+│   ├── helpers/
+│   ├── .env.example
+│   ├── server.js
+│   └── package.json
+├── render.yaml
+└── README.md
 ```
 
-2. Skonfiguruj backend:
+## 📋 Dostepne strony
 
-```bash
-cp backend/.env.example backend/.env
-```
+- **/** - ekran logowania/rejestracji
+- **/transactions/expenses** - lista wydatkow + formularz dodawania
+- **/transactions/income** - lista przychodow + formularz dodawania
+- **/reports** - raporty z podzialem na kategorie i wykres
 
-3. Ustaw frontend API URL:
+## 🚀 Jak uruchomic aplikacje
 
-```bash
-cp frontend/.env.example frontend/.env
-```
+### Wymagania wstepne
 
-4. Uruchom oba serwisy:
+- Node.js (LTS, dla backendu zalecane >= 20.19.0)
+- npm
 
-```bash
-npm run dev
-```
+### Instalacja i uruchomienie
 
-## Zmienne srodowiskowe
+1. Sklonuj repozytorium:
 
-### Backend (`backend/.env`)
+   ```bash
+   git clone https://github.com/brzozanet/smart-finance.git
+   cd smart-finance
+   ```
+
+2. Zainstaluj zaleznosci:
+
+   ```bash
+   npm install
+   ```
+
+3. Skonfiguruj backend:
+
+   ```bash
+   cp backend/.env.example backend/.env
+   ```
+
+   Przyklad `backend/.env`:
+
+   ```env
+   PORT=8000
+   DATABASE_URL=mongodb://127.0.0.1:27017/finance_planner
+   SECRET=replace_with_long_random_secret
+   FRONTEND_URL=http://localhost:3000
+   ```
+
+4. Skonfiguruj frontend:
+
+   ```bash
+   cp frontend/.env.example frontend/.env
+   ```
+
+   Przyklad `frontend/.env`:
+
+   ```env
+   REACT_APP_API_URL=http://localhost:8000/
+   ```
+
+5. Uruchom aplikacje (frontend + backend):
+
+   ```bash
+   npm run dev
+   ```
+
+   Frontend: [http://localhost:3000](http://localhost:3000)
+
+## 🌐 API Endpoints
+
+Backend udostepnia nastepujace endpointy:
+
+- `GET /health` - health check API
+- `POST /auth/register` - rejestracja uzytkownika
+- `POST /auth/login` - logowanie (JWT)
+- `POST /auth/logout` - wylogowanie (wymaga auth)
+- `PATCH /auth/balance` - aktualizacja salda (wymaga auth)
+- `POST /transaction/expense` - dodanie wydatku (wymaga auth)
+- `POST /transaction/income` - dodanie przychodu (wymaga auth)
+- `DELETE /transaction/:transactionId` - usuniecie transakcji (wymaga auth)
+- `GET /transaction/expense` - lista/statystyki wydatkow (wymaga auth)
+- `GET /transaction/income` - lista/statystyki przychodow (wymaga auth)
+
+## ✨ Funkcjonalnosci
+
+### Zaimplementowane
+
+- 🔐 Rejestracja i logowanie uzytkownika (JWT)
+- 👤 Ochrona tras (`ProtectedRoute`, `PrivateRoute`)
+- 💰 Zarzadzanie saldem konta
+- 🧾 Dodawanie i usuwanie wydatkow
+- 📊 Podsumowania miesieczne (expense/income)
+- 🗂 Raporty kategorii + wykres slupkowy
+- 📅 Formularz daty (DatePicker) przy dodawaniu transakcji
+- 📱 Responsywny interfejs (mobile + desktop)
+- ⚠️ Komunikaty bledow walidacji logowania/rejestracji
+
+### Ważne doprecyzowanie stanu projektu
+
+- Backend wspiera operacje dla przychodow i wydatkow.
+- W aktualnym frontendzie czesc przychodow/raportow korzysta z danych pomocniczych `redux/fakeDb.js` (do mockowania widokow), podczas gdy wydatki sa zintegrowane z API.
+
+## 📝 Uwagi
+
+- Aplikacja wymaga dzialajacego backendu, aby poprawnie obslugiwac autoryzacje i operacje finansowe.
+- W produkcji backend laczy sie z MongoDB Atlas przez `DATABASE_URL`.
+- Jesli backend jest usypiany na Render, pierwsze zapytanie moze byc wolniejsze.
+
+### 🌐 Deployment
+
+Projekt jest zdeployowany na:
+
+- **Frontend**: [https://smart-finance-kapusta.vercel.app/](https://smart-finance-kapusta.vercel.app/)
+- **Backend**: [https://smart-finance-backend-egfl.onrender.com](https://smart-finance-backend-egfl.onrender.com)
+
+#### Ustawienia produkcyjne ENV
+
+Backend (Render):
 
 ```env
 PORT=8000
-DATABASE_URL=mongodb+srv://...
-SECRET=very_long_random_secret
-FRONTEND_URL=http://localhost:3000,https://twoj-frontend.vercel.app,https://*.vercel.app
+DATABASE_URL=mongodb+srv://<DB_USER>:<DB_PASS>@<CLUSTER_HOST>/<DB_NAME>?retryWrites=true&w=majority
+SECRET=<LONG_RANDOM_SECRET>
+FRONTEND_URL=https://smart-finance-kapusta.vercel.app,https://*.vercel.app
 ```
 
-### Frontend (Vercel Env)
+Frontend (Vercel):
 
 ```env
-REACT_APP_API_URL=https://twoj-backend.onrender.com/
+REACT_APP_API_URL=https://smart-finance-backend-egfl.onrender.com/
 ```
 
-Uwaga: koncowy slash w `REACT_APP_API_URL` jest OK dla obecnego kodu axios.
-Uwaga: w `FRONTEND_URL` nie dodawaj trailing slash (`/`).
+## 🎯 Status projektu
 
-## Deployment krok po kroku
+✅ Projekt dziala na produkcji (Vercel + Render).
 
-### 1) Backend na Render
+🛠 Trwa dalsze porzadkowanie warstwy danych na froncie (pelna unifikacja API dla raportow i przychodow).
 
-1. Podlacz repozytorium w Render.
-2. Utworz `Web Service` z katalogu `backend`.
-3. Ustaw:
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-   - Health Check Path: `/health`
-   - Node: `20.19.0` lub nowszy
-4. Dodaj envy: `DATABASE_URL`, `SECRET`, `FRONTEND_URL`, `PORT=8000`.
-5. Po deployu skopiuj URL backendu, np. `https://finance-planner-backend.onrender.com`.
+---
 
-Rekomendacja dla `FRONTEND_URL`:
-
-- produkcja: `https://twoj-frontend.vercel.app`
-- preview deploye: `https://*.vercel.app`
-
-(Alternatywnie mozesz skorzystac z `render.yaml` z roota repo.)
-
-### 2) Frontend na Vercel
-
-1. Podlacz repozytorium i jako Root Directory ustaw `frontend`.
-2. Ustaw ENV:
-   - `REACT_APP_API_URL=https://finance-planner-backend.onrender.com/`
-3. Build command: `npm run build`
-4. `frontend/vercel.json` ma rewrite do `index.html`, wiec routing React powinien dzialac bez 404 na odswiezeniu.
-
-## Health check
-
-Backend endpoint:
-
-```text
-GET /health
-```
-
-## Typowe problemy
-
-- CORS error: sprawdz `FRONTEND_URL` w backendzie (musi zawierac dokladny adres Vercel).
-- 404 po odswiezeniu frontend route: sprawdz czy Vercel bierze `frontend/vercel.json`.
-- 500 na API: sprawdz `DATABASE_URL` i `SECRET` w Render env.
+**Smart Finance Kapu$ta to praktyczny projekt full-stack do zarzadzania domowym budzetem z autoryzacja, API i baza MongoDB.**
