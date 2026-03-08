@@ -11,6 +11,18 @@ const transactionRouter = require("./routes/transaction.routes");
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
+const normalizeOrigin = (origin) => origin.replace(/\/+$/, "");
+
+const originMatchesPattern = (origin, pattern) => {
+  if (pattern.includes("*")) {
+    const escaped = pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&");
+    const wildcardRegex = new RegExp(`^${escaped.replace(/\*/g, ".*")}$`);
+    return wildcardRegex.test(origin);
+  }
+
+  return origin === pattern;
+};
+
 app.use(morgan(formatsLogger));
 
 // Allow local dev and explicitly configured frontend domains (e.g. Vercel).
@@ -20,6 +32,7 @@ const allowedOrigins = [
   ...(process.env.FRONTEND_URL || "")
     .split(",")
     .map((origin) => origin.trim())
+    .map((origin) => normalizeOrigin(origin))
     .filter(Boolean),
 ];
 
@@ -27,7 +40,16 @@ app.use(
   cors({
     origin(origin, callback) {
       // Requests without origin (curl/postman/server-to-server) should pass.
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      const normalizedOrigin = normalizeOrigin(origin);
+      const isAllowed = allowedOrigins.some((allowedOrigin) =>
+        originMatchesPattern(normalizedOrigin, allowedOrigin),
+      );
+
+      if (isAllowed) {
         return callback(null, true);
       }
 

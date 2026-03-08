@@ -49,7 +49,7 @@ npm run dev
 PORT=8000
 DATABASE_URL=mongodb+srv://...
 SECRET=very_long_random_secret
-FRONTEND_URL=http://localhost:3000,https://twoj-frontend.vercel.app
+FRONTEND_URL=http://localhost:3000,https://twoj-frontend.vercel.app,https://*.vercel.app
 ```
 
 ### Frontend (Vercel Env)
@@ -59,6 +59,7 @@ REACT_APP_API_URL=https://twoj-backend.onrender.com/
 ```
 
 Uwaga: koncowy slash w `REACT_APP_API_URL` jest OK dla obecnego kodu axios.
+Uwaga: w `FRONTEND_URL` nie dodawaj trailing slash (`/`).
 
 ## Deployment krok po kroku
 
@@ -74,6 +75,11 @@ Uwaga: koncowy slash w `REACT_APP_API_URL` jest OK dla obecnego kodu axios.
 4. Dodaj envy: `DATABASE_URL`, `SECRET`, `FRONTEND_URL`, `PORT=8000`.
 5. Po deployu skopiuj URL backendu, np. `https://finance-planner-backend.onrender.com`.
 
+Rekomendacja dla `FRONTEND_URL`:
+
+- produkcja: `https://twoj-frontend.vercel.app`
+- preview deploye: `https://*.vercel.app`
+
 (Alternatywnie mozesz skorzystac z `render.yaml` z roota repo.)
 
 ### 2) Frontend na Vercel
@@ -81,7 +87,7 @@ Uwaga: koncowy slash w `REACT_APP_API_URL` jest OK dla obecnego kodu axios.
 1. Podlacz repozytorium i jako Root Directory ustaw `frontend`.
 2. Ustaw ENV:
    - `REACT_APP_API_URL=https://finance-planner-backend.onrender.com/`
-3. Wdrozenie wykona `npm run build` automatycznie.
+3. Build command: `npm run build`
 4. `frontend/vercel.json` ma rewrite do `index.html`, wiec routing React powinien dzialac bez 404 na odswiezeniu.
 
 ## Health check
